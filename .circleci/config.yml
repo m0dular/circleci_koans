@@ -7,14 +7,12 @@ jobs:
       - image: cimg/base:2023.03
     steps:
       - checkout
-      #- run: 
-      #    name: Install sysstat
-      - run: echo "this is the build job"
-          #command: |
-          #  sudo apt-get update
-          #  sudo apt-get install -y sysstat
-          #  sudo systemctl enable sysstat
-          #  sudo systemctl start sysstat
+      - run: 
+          name: Install sysstat
+          command: |
+            sudo apt-get update
+            sudo apt-get install -y sysstat
+            /usr/lib/sysstat/sa1 --boot
 
 
       - store_artifacts:
