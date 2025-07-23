@@ -14,6 +14,11 @@ jobs:
             sudo apt-get install -y sysstat
             sudo /usr/lib/sysstat/sa1 --boot
 
+      - run:
+          name: Spin wheels
+          command: |
+            sleep 30m
+
 
       - store_artifacts:
           path: /var/log/sysstat
