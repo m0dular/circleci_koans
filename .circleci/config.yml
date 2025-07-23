@@ -12,7 +12,7 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y sysstat
-            /usr/lib/sysstat/sa1 --boot
+            sudo /usr/lib/sysstat/sa1 --boot
 
 
       - store_artifacts:
