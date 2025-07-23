@@ -1,37 +1,25 @@
 version: 2.1
 
+# Define the jobs we want to run for this project
 jobs:
   build:
     docker:
-      - image: cimg/base:2022.10
+      - image: cimg/base:2023.03
     steps:
       - checkout
-      - run: echo "Building complete"
-  test-production:
-    docker:
-      - image: cimg/base:2022.10
-    steps:
-      - checkout
-      - run: echo "Testing complete"
-  deploy:
-    docker:
-      - image: cimg/base:2022.10
-    steps:
-      - checkout
-      - run: echo "Deploy complete"
+      - run: 
+        name: Install sysstat
+        command |
+          sudo apt-get update
+          sudo apt-get install -y sysstat
+          sudo systemctl enable sysstat
+          sudo systemctl start sysstat
 
+
+      - store_artifacts:
+      path: /var/log/sysstat
+# Orchestrate our job run sequence
 workflows:
-  build-test-and-deploy:
+  build_and_test:
     jobs:
       - build
-      - test-production:
-          requires:
-            - build
-      - deploy:
-          filters:
-            branches:
-              only:
-                - production
-
-          requires:
-            - test-production
