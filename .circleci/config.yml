@@ -18,9 +18,9 @@ jobs:
           name: Collect sar
           command: |
             while :; do
-            sar -Az 1 1
-            sleep 5m
-          done
+              sar -Az 1 1
+              sleep 5m
+            done
           background: true
 
       - run:
