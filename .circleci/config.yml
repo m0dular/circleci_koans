@@ -16,7 +16,7 @@ jobs:
 
       - run:
           name: Spin wheels
-          no_output_timeout: 30m
+          no_output_timeout: 1h
           command: |
             sleep 30m
 
