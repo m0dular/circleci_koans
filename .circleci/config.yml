@@ -9,11 +9,11 @@ jobs:
       - checkout
       - run: 
           name: Install sysstat
-          command: |
-            sudo apt-get update
-            sudo apt-get install -y sysstat
-            sudo systemctl enable sysstat
-            sudo systemctl start sysstat
+          #command: |
+          #  sudo apt-get update
+          #  sudo apt-get install -y sysstat
+          #  sudo systemctl enable sysstat
+          #  sudo systemctl start sysstat
 
 
       - store_artifacts:
