@@ -15,10 +15,19 @@ jobs:
             sudo /usr/lib/sysstat/sa1 --boot
 
       - run:
-          name: Spin wheels
-          no_output_timeout: 1h
+          name: Collect sar
           command: |
-            sleep 30m
+            while :; do
+            sar -Az 1 1
+            sleep 5m
+          done
+          background: true
+
+      - run:
+          name: Spin wheels
+          no_output_timeout: 30m
+          command: |
+            sleep 15m
 
 
       - store_artifacts:
