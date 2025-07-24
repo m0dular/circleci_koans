@@ -15,10 +15,18 @@ jobs:
             sudo /usr/lib/sysstat/sa1 --boot
 
       - run:
+          name: Collect sa
+          command: |
+            while :; do
+              /usr/lib/sysstat/sa1 1 1
+              sleep 5m
+            done
+          background: true
+
           name: Collect sar
           command: |
             while :; do
-              sar -Az 1 1
+              S_COLORS=never sar -Az 1 1
               sleep 5m
             done
           background: true
