@@ -18,7 +18,7 @@ jobs:
           name: Collect sa
           command: |
             while :; do
-              /usr/lib/sysstat/sa1 1 1
+              sudo /usr/lib/sysstat/sa1 1 1
               sleep 5m
             done
           background: true
